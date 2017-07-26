@@ -1,0 +1,28 @@
+{
+  "name": "nwb-cn",
+  "version": "1.0.0",
+  "description": "nwb中文文档",
+  "main": "index.js",
+  "scripts": {
+    "init": "gitbook init",
+    "start": "gitbook serve",
+    "build": "gitbook build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.kirk:Kirk-Wang/nwb-cn.git"
+  },
+  "keywords": [
+    "nwb",
+    "admin",
+    "rest"
+  ],
+  "author": "Kirk.Wang",
+  "license": "MIT",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.0",
+    "gitbook-plugin-github-buttons": "^2.1.0"
+  },
+  "dependencies": {}
+}
