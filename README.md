@@ -1,4 +1,4 @@
-# nwb{#nwb}
+# nwb中文文档{#nwb}
 
 ![Linux](https://github.com/insin/nwb/blob/master/resources/linux.png) [![Travis][travis-badge]][travis]
 ![Windows](https://github.com/insin/nwb/blob/master/resources/windows.png) [![Appveyor][appveyor-badge]][appveyor]
@@ -44,7 +44,7 @@ npm install --save-dev nwb
 }
 ```
 
-## 快速开发{#Quick-Development}
+## 快速开发{#quick-development}
 
 要快速使用React，Inferno，Preact或vanilla JavaScript开发，请使用`nwb react`，`nwb inferno`，`nwb preact`或`nwb web`命令。
 
@@ -140,13 +140,13 @@ cd my-module/
 
 `npm test`将运行项目的测试，并且`npm run build`将创建ES5，ES6模块和UMD版本以便发布到npm。
 
-## [指南](/docs/guides/#table-of-contents)
+## [指南](https://github.com/insin/nwb/tree/master/docs/guides#table-of-contents){#guides}
 
-- [快速使用nwb开发](/docs/guides/QuickDevelopment.md#quick-development-with-nwb)
-- [使用nwb开发React应用程序](/docs/guides/ReactApps.md#developing-react-apps-with-nwb)
-- [使用nwb开发React组件和库](/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb)
+- [快速使用nwb开发](https://github.com/insin/nwb/blob/master/docs/guides/QuickDevelopment.md#quick-development-with-nwb)
+- [使用nwb开发React应用程序](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb)
+- [使用nwb开发React组件和库](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb)
 
-## [文档](/docs/#table-of-contents)
+## [文档](https://github.com/insin/nwb/tree/master/docs#table-of-contents){#documentation}
 
 - [特点](https://github.com/insin/nwb/blob/master/docs/Features.md#features)
 - [命令](https://github.com/insin/nwb/blob/master/docs/Commands.md#commands)
@@ -166,7 +166,7 @@ cd my-module/
 - [常见问题](https://github.com/insin/nwb/blob/master/docs/FAQ.md#frequently-asked-questions)
 - [版本](https://github.com/insin/nwb/blob/master/docs/Versioning.md#versioning)
 
-## 为什么使用nwb ?
+## 为什么使用nwb ?{#why-use-nwb}
 
 **快速开始**. 从单个`.js`文件开始开发，或者[生成一个项目骨架](https://github.com/insin/nwb/blob/master/docs/Commands.md#new)。
 
