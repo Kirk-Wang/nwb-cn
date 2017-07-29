@@ -5,7 +5,7 @@ nwb的默认设置可以让您无需任何配置即可开发，测试和构建�
 如果您需要调整默认设置以满足项目需求，或者您想要使用Babel，Karma和Webpack生态系统提供的其他功能，则可以提供配置文件。
 
 > You can also add new functionality by installing a [plugin module](/docs/Plugins.md#plugins).
-> 您还可以通过安装[plugin module]（/ docs / Plugins.md＃plugins）来添加新功能。
+> 您还可以通过[安装插件](/docs/Plugins.md#plugins)模块来添加新功能。
 
 ### Configuration File
 
