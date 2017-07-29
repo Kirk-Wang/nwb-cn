@@ -4,20 +4,19 @@ nwb的默认设置可以让您无需任何配置即可开发，测试和构建�
 
 如果您需要调整默认设置以满足项目需求，或者您想要使用Babel，Karma和Webpack生态系统提供的其他功能，则可以提供配置文件。
 
-> You can also add new functionality by installing a [plugin module](/docs/Plugins.md#plugins).
-> 您还可以通过[安装插件](/docs/Plugins.md#plugins)模块来添加新功能。
+> 您还可以通过[安装插件](https://github.com/insin/nwb/blob/master/docs/Plugins.md#plugins)模块来添加新功能。
 
-### Configuration File
+### 配置文件{#Configuration-File}
 
-By default, nwb will look for an `nwb.config.js` file in the current working directory for configuration.
+默认情况下，nwb将在当前工作目录中查找一个`nwb.config.js`文件进行配置。
 
-You can also specify a configuration file using the `--config` option:
+您还可以使用`--config`选项指定配置文件：
 
 ```
 nwb --config ./config/nwb.js
 ```
 
-This file should export either a configuration object...
+此文件也应导出一个配置对象...
 
 ```js
 module.exports = {
@@ -25,7 +24,7 @@ module.exports = {
 }
 ```
 
-...or a function which returns a configuration object when called:
+...或一个在调用时返回一个配置对象的函数：
 
 ```js
 module.exports = function(args) {
@@ -35,8 +34,9 @@ module.exports = function(args) {
 }
 ```
 
-If a function is exported, it will be passed an object with the following properties:
+如果一个函数被导出，它将被传递一个具有以下属性的对象：
 
-- `args`: a parsed version of arguments passed to the `nwb` command
-- `command`: the name of the command currently being executed, e.g. `'build'` or `'test'`
-- `webpack`: nwb's version of the `webpack` module, giving you access to the other plugins webpack provides.
+- `args`：一个传递给`nwb`命令的参数的解析版本
+- `command`：当前正在执行的命令的名称。 `'build'`或`'test'`
+- `webpack`：`webpack`模块的nwb版本，让您访问webpack提供的其他插件。
+
