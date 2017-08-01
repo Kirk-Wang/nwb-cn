@@ -40,3 +40,8 @@ module.exports = function(args) {
 - `command`：当前正在执行的命令的名称。 `'build'`或`'test'`
 - `webpack`：`webpack`模块的nwb版本，让您访问webpack提供的其他插件。
 
+#### 配置文件示例{#Example-Configuration-Files}
+
+- [react-hn's `nwb.config.js`](https://github.com/insin/react-hn/blob/concat/nwb.config.js) is a simple configuration file with minor tweaks to Babel and Webpack config.
+- [React Yelp Clone's `nwb.config.js`](https://github.com/insin/react-yelp-clone/blob/nwb/nwb.config.js) configures Babel, Karma and Webpack to allow nwb to be dropped into an existing app to handle its development tooling, [reducing the amount of `devDependencies` and configuration](https://github.com/insin/react-yelp-clone/compare/master...nwb) which need to be manage
+
