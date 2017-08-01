@@ -42,6 +42,23 @@ module.exports = function(args) {
 
 #### 配置文件示例{#Example-Configuration-Files}
 
-- [react-hn's `nwb.config.js`](https://github.com/insin/react-hn/blob/concat/nwb.config.js) is a simple configuration file with minor tweaks to Babel and Webpack config.
-- [React Yelp Clone's `nwb.config.js`](https://github.com/insin/react-yelp-clone/blob/nwb/nwb.config.js) configures Babel, Karma and Webpack to allow nwb to be dropped into an existing app to handle its development tooling, [reducing the amount of `devDependencies` and configuration](https://github.com/insin/react-yelp-clone/compare/master...nwb) which need to be manage
+- [react-hn的`nwb.config.js`](https://github.com/insin/react-hn/blob/concat/nwb.config.js)是一个简单的配置文件，对Babel和Webpack配置进行了微调。
+- [React Yelp Clone的nwb.config.js](https://github.com/insin/react-yelp-clone/blob/nwb/nwb.config.js)配置了Babel，Karma和Webpack，以便将nwb放入到已有应用程序中来处理它的开发工具，从而减少需要管理的devDependencies和配置的数量。
+
+### 通过参数配置{#Configuration-Via-Arguments}
+
+Configuration for the `babel`, `webpack`, `devServer`, `karma` and `npm` properties documented below can also be provided via arguments using dotted paths, instead of tweaking your `nwb.config.js` file for a single run, or instead of needing to add a config file for [Quick Development commands](/docs/guides/QuickDevelopment.md#quick-development-with-nwb):
+
+```sh
+nwb build-react-app --babel.stage=2 --webpack.hoisting
+```
+
+> **Note:** If you have a config file, these arguments will act as overrides.
+>
+> nwb uses [minimist](https://github.com/substack/minimist) for argument parsing, so here's quick cheatsheet if you wish to make use of this functionality:
+>
+> - `--config.example` is `true`
+> - `--no-config.example` is `false`
+> - `--config.example=value` is `'value'`
+> - `--config.example=one --config.example=two` is `['one', 'two']`
 
