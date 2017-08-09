@@ -147,27 +147,27 @@ module.exports = {
 }
 ```
 
-### Babel Configuration
+### Babel配置{#babel-configuration}
 
-#### `babel`: `Object`
+#### `babel`: `Object`{#babel-object}
 
-[Babel](https://babeljs.io/) configuration can be provided in a `babel` object, using the following properties.
+可以使用以下属性在`babel`对象中提供[Babel](https://babeljs.io/)配置。
 
-> For Webpack builds, any Babel config provided will be used to configure `babel-loader` - you can also provide additional configuration in [`webpack.rules`](#rules-object) if necessary.
+> 对于Webpack构建，任何提供的Babel配置将用于配置`babel-loader` - 如果需要，您还可以在[`webpack.rules`](#rules-object)中提供其他配置。
 
-##### `cherryPick`: `String | Array<String>`
+##### `cherryPick`: `String | Array<String>`{#cherrypick-string--arraystring}
 
-Module names to apply `import` cherry-picking to.
+应用`import`cherry-picking到模块名称。
 
-> This feature only works if you're using `import` syntax.
+> 此功能仅在您使用`import`语法时有效。
 
-If you import a module with destructuring, the entire module will normally be included in your build, even though you're only using specific pieces:
+如果您导入具有解构的模块，则整个模块通常会包含在构建中，即使您只使用特定的部分：
 
 ```js
 import {This, That, TheOther} from 'some-module'
 ```
 
-The usual workaround for this is to individually import submodules, which is tedious and bloats import sections in your code:
+通常的解决方法是单独导入子模块，这在您的代码中是繁琐的：
 
 ```js
 import This from 'some-module/lib/This'
@@ -175,7 +175,7 @@ import That from 'some-module/lib/That'
 import TheOther from 'some-module/lib/TheOther'
 ```
 
-If you use `cherryPick` config, you can keep writing code like the first example, but transpile to the same code as the second, by specifying the module name(s) to apply a cherry-picking transform to:
+如果您使用`cherryPick`配置，您可以像第一个示例一样编写代码，但是可以通过指定要将cherry-picking变换应用于的模块名称来转换为与第二个相同的代码：
 
 ```js
 module.exports = {
@@ -185,13 +185,13 @@ module.exports = {
 }
 ```
 
-This is implemented using [babel-plugin-lodash](https://github.com/lodash/babel-plugin-lodash) - please check its issues for compatibility problems with modules you're using `cherryPick` with and report any new ones you find.
+这是使用[babel-plugin-lodash](https://github.com/lodash/babel-plugin-lodash)实现的 - 请检查其问题与您正在使用cherryPick的模块的兼容性问题，并报告您找到的任何新的模块。
 
-##### `loose`: `Boolean`
+##### `loose`: `Boolean`{#loose-boolean}
 
-Some Babel plugins have a [loose mode](http://www.2ality.com/2015/12/babel6-loose-mode.html) in which they output simpler, potentially faster code rather than following the semantics of the ES6 spec closely.
+一些Babel插件具有[松散的模式](http://www.2ality.com/2015/12/babel6-loose-mode.html) ，其中输出更简单，可能更快的代码，而不是严格遵循ES6规范的语义。
 
-**nwb enables loose mode by default**.
+**nwb默认启用松散模式**。
 
 If you want to disable loose mode (e.g. to check your code works in the stricter normal mode for forward-compatibility purposes), set it to `false`.
 

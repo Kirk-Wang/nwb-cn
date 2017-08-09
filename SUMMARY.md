@@ -19,4 +19,6 @@
     * [配置对象](Configuration/README.md#Configuration-Object)
         * [type](Configuration/README.md#type-string-required-for-generic-build-commands)
         * [polyfill](Configuration/README.md#polyfill-boolean)
+        * [Babel配置](Configuration/README.md#babel-configuration)
+            * [babel](Configuration/README.md#babel-object)
     
