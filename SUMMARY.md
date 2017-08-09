@@ -13,8 +13,8 @@
     * [文档](README.md#documentation)
     * [为什么使用nwb ?](README.md#why-use-nwb)
 * [配置](Configuration/README.md#Configuration)
-    * [配置文件](README.md#Configuration-File)
-    * [配置文件示例](README.md#Example-Configuration-Files)
-    * [通过参数配置](README.md#Configuration-Via-Arguments)
-    * [配置对象](README.md#Configuration-Object)
+    * [配置文件](Configuration/README.md#Configuration-File)
+    * [配置文件示例](Configuration/README.md#Example-Configuration-Files)
+    * [通过参数配置](Configuration/README.md#Configuration-Via-Arguments)
+    * [配置对象](Configuration/README.md#Configuration-Object)
     
