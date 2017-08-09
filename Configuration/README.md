@@ -122,4 +122,86 @@ nwb build-react-app --babel.stage=2 --webpack.hoisting
     - [`package.json` 字段](#packagejson-umd-banner-configuration)
 
 
+#### `type`: `String` (通用构建命令需要指定此字段){#type-string-required-for-generic-build-commands}
+
+当使用通用构建命令（如`build`）时，nwb使用此字段来确定它正在使用的项目类型。 如果您正在使用具有您正在使用的项目类型的名称的命令，则不需要进行配置。
+
+如果配置，它必须是以下之一：
+
+- `'inferno-app'`
+- `'preact-app'`
+- `'react-app'`
+- `'react-component'`
+- `'web-app'`
+- `'web-module'`
+
+#### `polyfill`: `Boolean`{#polyfill-boolean}
+
+对于应用程序，默认情况下，nwb将为`Promise`，`fetch`和`Object.assign`提供Polyfills。
+
+要禁用此功能，请将`polyfill'设置为`false`：
+
+```js
+module.exports = {
+  polyfill: false
+}
+```
+
+### Babel Configuration
+
+#### `babel`: `Object`
+
+[Babel](https://babeljs.io/) configuration can be provided in a `babel` object, using the following properties.
+
+> For Webpack builds, any Babel config provided will be used to configure `babel-loader` - you can also provide additional configuration in [`webpack.rules`](#rules-object) if necessary.
+
+##### `cherryPick`: `String | Array<String>`
+
+Module names to apply `import` cherry-picking to.
+
+> This feature only works if you're using `import` syntax.
+
+If you import a module with destructuring, the entire module will normally be included in your build, even though you're only using specific pieces:
+
+```js
+import {This, That, TheOther} from 'some-module'
+```
+
+The usual workaround for this is to individually import submodules, which is tedious and bloats import sections in your code:
+
+```js
+import This from 'some-module/lib/This'
+import That from 'some-module/lib/That'
+import TheOther from 'some-module/lib/TheOther'
+```
+
+If you use `cherryPick` config, you can keep writing code like the first example, but transpile to the same code as the second, by specifying the module name(s) to apply a cherry-picking transform to:
+
+```js
+module.exports = {
+  babel: {
+    cherryPick: 'some-module'
+  }
+}
+```
+
+This is implemented using [babel-plugin-lodash](https://github.com/lodash/babel-plugin-lodash) - please check its issues for compatibility problems with modules you're using `cherryPick` with and report any new ones you find.
+
+##### `loose`: `Boolean`
+
+Some Babel plugins have a [loose mode](http://www.2ality.com/2015/12/babel6-loose-mode.html) in which they output simpler, potentially faster code rather than following the semantics of the ES6 spec closely.
+
+**nwb enables loose mode by default**.
+
+If you want to disable loose mode (e.g. to check your code works in the stricter normal mode for forward-compatibility purposes), set it to `false`.
+
+e.g. to disable loose mode only when running tests:
+
+```js
+module.exports = {
+  babel: {
+    loose: process.env.NODE_ENV === 'test'
+  }
+}
+```
 

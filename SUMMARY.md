@@ -17,4 +17,6 @@
     * [配置文件示例](Configuration/README.md#Example-Configuration-Files)
     * [通过参数配置](Configuration/README.md#Configuration-Via-Arguments)
     * [配置对象](Configuration/README.md#Configuration-Object)
+        * [type](Configuration/README.md#type-string-required-for-generic-build-commands)
+        * [polyfill](Configuration/README.md#polyfill-boolean)
     
