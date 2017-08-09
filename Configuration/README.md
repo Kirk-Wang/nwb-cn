@@ -97,29 +97,29 @@ nwb build-react-app --babel.stage=2 --webpack.hoisting
   - [`webpack.publicPath`](#publicpath-string) - 静态资源的路径
   - [`webpack.styles`](#styles-object--false--old) - 自定义创建样式表的Webpack规则
   - [`webpack.uglify`](#uglify-object--false) - 配置使用Webpack的`UglifyJsPlugin`
-  - [`webpack.extra`](#extra-object) - an escape hatch for extra Webpack config, which will be merged into the generated config
-  - [`webpack.config`](#config-function) - an escape hatch for manually editing the generated Webpack config
-- [Dev Server Configuration](#dev-server-configuration)
-  - [`devServer`](#devserver-object) - configure Webpack Dev Server
-- [Karma Configuration](#karma-configuration)
+  - [`webpack.extra`](#extra-object) - 用于Webpack额外的配置，它将被合并到生成的配置中
+  - [`webpack.config`](#config-function) - 用于手动编辑生成的Webpack配置
+- [Dev Server配置](#dev-server-configuration)
+  - [`devServer`](#devserver-object) - 配置Webpack Dev Server
+- [Karma配置](#karma-configuration)
   - [`karma`](#karma-object)
-  - [`karma.browsers`](#browsers-arraystring--plugin) - browsers tests are run in
-  - [`karma.excludeFromCoverage`](#excludefromcoverage-string--arraystring) - globs for paths which should be excluded from code coverage reporting
-  - [`karma.frameworks`](#frameworks-arraystring--plugin) - testing framework
-  - [`karma.plugins`](#plugins-arrayplugin) - additional Karma plugins
-  - [`karma.reporters`](#reporters-arraystring--plugin) - test results reporter
-  - [`karma.testContext`](#testcontext-string) - point to a Webpack context module for your tests
-  - [`karma.testFiles`](#testfiles-string--arraystring) - patterns for test files
-  - [`karma.extra`](#extra-object-1) - an escape hatch for extra Karma config, which will be merged into the generated config
-- [npm Build Configuration](#npm-build-configuration)
+  - [`karma.browsers`](#browsers-arraystring--plugin) - 浏览器测试运行
+  - [`karma.excludeFromCoverage`](#excludefromcoverage-string--arraystring) - 应该从代码覆盖率报告中排除的路径
+  - [`karma.frameworks`](#frameworks-arraystring--plugin) - 测试框架
+  - [`karma.plugins`](#plugins-arrayplugin) - 外的Karma插件
+  - [`karma.reporters`](#reporters-arraystring--plugin) - 测试结果报告
+  - [`karma.testContext`](#testcontext-string) - 指向您的测试的Webpack上下文模块
+  - [`karma.testFiles`](#testfiles-string--arraystring) - 测试文件的模式
+  - [`karma.extra`](#extra-object-1) - 用于额外的Karma配置，将被合并到生成的配置中
+- [npm 构建配置](#npm-build-configuration)
   - [`npm`](#npm-object)
-  - [`npm.cjs`](#esmodules-boolean) - toggle creation of a CommonJS build
-  - [`npm.esModules`](#esmodules-boolean) - toggle creation of an ES modules build
+  - [`npm.cjs`](#esmodules-boolean) - 切换创建一个CommonJS构建
+  - [`npm.esModules`](#esmodules-boolean) - 切换创建ES模块构建
   - UMD build
-    - [`npm.umd`](#umd-string--object) - enable a UMD build which exports a global variable
-      - [`umd.global`](#global-string) - global variable name exported by UMD build
-      - [`umd.externals`](#externals-object) - dependencies to use via global variables in UMD build
-    - [`package.json` fields](#packagejson-umd-banner-configuration)
+    - [`npm.umd`](#umd-string--object) - 启用导出全局变量的UMD构建
+      - [`umd.global`](#global-string) - 由UMD构建导出的全局变量名
+      - [`umd.externals`](#externals-object) - 在UMD构建中通过全局变量使用依赖关系
+    - [`package.json` 字段](#packagejson-umd-banner-configuration)
 
 
 
