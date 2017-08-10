@@ -193,9 +193,9 @@ module.exports = {
 
 **nwb默认启用松散模式**。
 
-If you want to disable loose mode (e.g. to check your code works in the stricter normal mode for forward-compatibility purposes), set it to `false`.
+如果要禁用松散模式（例如，为了检查您的代码是否在更严格的正常模式下工作以实现向前兼容性），请将其设置为`false`。
 
-e.g. to disable loose mode only when running tests:
+例如，仅在运行测试时禁用松散模式：
 
 ```js
 module.exports = {
