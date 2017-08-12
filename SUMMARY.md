@@ -21,4 +21,12 @@
         * [polyfill](Configuration/README.md#polyfill-boolean)
         * [Babel配置](Configuration/README.md#babel-configuration)
             * [babel](Configuration/README.md#babel-object)
+            * [babel.cherryPick](Configuration/README.md#cherrypick-string--arraystring)
+            * [babel.loose](Configuration/README.md#loose-boolean)
+            * [babel.plugins](Configuration/README.md#plugins-string--array)
+            * [babel.presets](Configuration/README.md#presets-string--array)
+            * [babel.removePropTypes](Configuration/README.md#removeproptypes-object--false)
+            * [babel.reactConstantElements](Configuration/README.md#reactconstantelements-false)
+            * [babel.runtime](Configuration/README.md#runtime-string--boolean)
+            * [babel.stage](Configuration/README.md#stage-number--false)
     

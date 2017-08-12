@@ -195,12 +195,130 @@ module.exports = {
 
 如果要禁用松散模式（例如，为了检查您的代码是否在更严格的正常模式下工作以实现向前兼容性），请将其设置为`false`。
 
-例如，仅在运行测试时禁用松散模式：
+例如：仅在运行测试时禁用松散模式：
 
 ```js
 module.exports = {
   babel: {
     loose: process.env.NODE_ENV === 'test'
+  }
+}
+```
+
+##### `plugins`: `String` | `Array`{#plugins-string--array}
+
+使用额外的Babel插件。
+
+一个不需要配置对象的附加插件可以被指定为一个String，否则提供一个Array。
+
+nwb命令在当前工作目录中运行，因此如果您需要配置其他Babel插件或预设，您可以在本地安装它们，传递名称并让Babel为您导入。
+
+例如 安装和使用[babel-plugin-react-html-attrs](https://github.com/insin/babel-plugin-react-html-attrs#readme)插件：
+
+```
+npm install babel-plugin-react-html-attrs
+```
+```js
+module.exports = {
+  babel: {
+    plugins: 'react-html-attrs'
+  }
+}
+```
+
+##### `presets`: `String` | `Array`
+
+额外的Babel预设使用。
+
+不需要配置对象的单个附加预设可以指定为String，否则提供一个Array。
+
+##### `removePropTypes`: `Object | false`
+
+由于React`propTypes`仅用于开发模式，所以nwb默认使用[react-remove-prop-types](https://github.com/oliviertassinari/babel-plugin-transform-react-remove-prop-types)转换将它们从React应用程序生产构建中删除。
+
+设置为`false`以禁止使用此转换：
+
+```js
+module.exports = {
+  babel: {
+    removePropTypes: false,
+  }
+}
+```
+
+提供一个对象来配置[转换的选项](https://github.com/oliviertassinari/babel-plugin-transform-react-remove-prop-types#options)：
+
+```js
+module.exports = {
+  babel: {
+    removePropTypes: {
+      // Remove imports of the 'prop-types' module as well
+      // Only safe to enable if you're only using this module for propTypes
+      removeImport: true
+    },
+  }
+}
+```
+
+##### `reactConstantElements`: `false`{#reactconstantelements-false}
+
+将其设置为`false`可禁用在React应用程序生产构建中使用[React常量元素提升转换](https://babeljs.io/docs/plugins/transform-react-constant-elements/)。
+
+##### `runtime`: `String | Boolean`
+
+默认情况下，Babel的[runtime transform](https://babeljs.io/docs/plugins/transform-runtime/)有3件事情：
+
+1. 从`babel-runtime`导入helper模块，而不是在需要它们的每个模块中复制**helpers**。
+2. 在您的代码中使用新的ES6内置（`Promise`）和静态方法（例如`Object.assign`）时，导入本地**polyfill**。
+3. 导入在需要使用`async`/`await`所需的**regenerator** 运行时。
+
+nwb的默认配置打开regenerator运行时导入，因此你可以使用`async`/`await`和generator。
+
+要启用其他功能，您可以命名（`'helpers'`或`'polyfill'`）：
+
+```js
+module.exports = {
+  babel: {
+    runtime: 'helpers'
+  }
+}
+```
+
+要启用所有功能，请将`runtime`设置为`true`。
+
+要禁用使用运行时转换，将`runtime`设置为`false`。
+
+> **注意：**如果在React Component或Web Module项目中使用`async`/`await`或启用运行时转换的其他功能，则需要在您的package.json`peerDependencies`中添加`babel-runtime`，以确保其他人使用模块时可以从npm resolved。
+
+##### `stage`: `Number | false`{#stage-number--false}
+
+> nwb实现了自己相当于Babel 5的Babel 6的`stage`配置
+
+控制哪些Babel预设将用于在代码中使用实验性，建议和即将到来的JavaScript功能，按照TC39过程中的阶段分组，以提出新的JavaScript功能：
+
+| Stage | TC39 Category | Features |
+| ----- | ------------- | -------- |
+| [0](https://babeljs.io/docs/plugins/preset-stage-0) | Strawman, just an idea |`do {...}` expressions, `::` function bind operator |
+| [1](https://babeljs.io/docs/plugins/preset-stage-1) | Proposal: this is worth working on | export extensions |
+| [2](https://babeljs.io/docs/plugins/preset-stage-2) | Draft: initial spec | class properties, `@decorator` syntax (using the [Babel Legacy Decorator plugin](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)) - **enabled by default** |
+| [3](https://babeljs.io/docs/plugins/preset-stage-3) | Candidate: complete spec and initial browser implementations | object rest/spread `...` syntax,  `async`/`await`, `**` exponentiation operator, trailing function commas |
+
+例如，如果您想在应用中使用导出扩展程序，则应将`stage`设置为`1`：
+
+```js
+module.exports = {
+  babel: {
+    stage: 1
+  }
+}
+```
+
+默认情况下启用Stage 2 - 完全禁用stage预设，将`stage`设置为`false`：
+
+```js
+module.exports = {
+  babel: {
+    stage: false
   }
 }
 ```
