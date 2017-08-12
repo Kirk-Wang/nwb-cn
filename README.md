@@ -1,4 +1,4 @@
-# nwb中文文档{#nwb}
+# nwb中文文档{#nwb}-->>[GitBook](https://kirk-wang.gitbooks.io/nwb-cn/content/#nwb)
 
 ![Linux](https://github.com/insin/nwb/blob/master/resources/linux.png) [![Travis][travis-badge]][travis]
 ![Windows](https://github.com/insin/nwb/blob/master/resources/windows.png) [![Appveyor][appveyor-badge]][appveyor]
