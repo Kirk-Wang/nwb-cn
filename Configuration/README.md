@@ -841,25 +841,25 @@ module.exports = {
 }
 ```
 
-### Karma Configuration
+### Karma Configuration{#karma-configuration}
 
-nwb's default [Karma](http://karma-runner.github.io/) configuration uses the [Mocha](https://mochajs.org/) framework and reporter plugins for it, but you can configure your own preferences.
+nwb默认[Karma](http://karma-runner.github.io/)配置使用[Mocha](https://mochajs.org/)框架和reporter插件，但您可以配置自己的首选项。
 
-> **Note:** At runtime, Karma sets a `usePolling` autoWatch option to `true` [if the platform is detected to be macOS or Linux](https://github.com/karma-runner/karma/blob/master/lib/config.js#L318). However, Karma's non-polling file-watching works correctly and consumes dramatically less CPU on macOS. nwb users on macOS will want to set `usePolling: false` within the [`extra:`](#extra-object-1) Object in the `karma:` config section of their `nwb.config.js`.
+> **注意：** 在运行时，[如果检测到平台是macOS或Linux](https://github.com/karma-runner/karma/blob/master/lib/config.js#L318)，则Karma会将`usePolling`autoWatch选项设置为true。 但是，Karma的非轮询文件监控在macOS上大大减少CPU消耗。 macOS上的nwb用户想要设置的话，需要在`nwb.config.js`的`karma:`配置部分中的[`extra:`](#extra-object-1)对象中设置`usePolling: false`。
 
-#### `karma`: `Object`
+#### `karma`: `Object`{#karma-object}
 
-Karma configuration can be provided in a `karma` object, using the following properties:
+可以使用以下属性在`karma`对象中提供Karma配置：
 
-##### `browsers`: `Array<String | Plugin>`
+##### `browsers`: `Array<String | Plugin>`{#browsers-arraystring--plugin}
 
-> Default: `['PhantomJS']`
+> Default: `['PhantomJS']`{#browsers-arraystring--plugin}
 
-A list of browsers to run tests in.
+用于运行测试的浏览器列表。
 
-PhantomJS is the default as it's installed by default with nwb and should be able to run in any environment.
+默认情况下，使用nwb时，PhantomJS是默认安装的，并且可以在任何环境中运行。
 
-The launcher plugin for Chrome is also included, so if you want to run tests in Chrome, you can just name it:
+Chrome的启动器插件也包括在内，所以如果你想在Chrome中运行测试，你可以命名：
 
 ```js
 module.exports = {
@@ -869,7 +869,7 @@ module.exports = {
 }
 ```
 
-For other browsers, you will also need to supply a plugin and manage that dependency yourself:
+对于其他浏览器，您还需要提供一个插件并自己管理该依赖：
 
 ```js
 module.exports = {
@@ -882,7 +882,7 @@ module.exports = {
 }
 ```
 
-nwb can also use the first browser defined in a launcher plugin if you pass it in `browsers`:
+如果您在`browsers`中传递它，nwb也可以使用启动器插件中定义的第一个浏览器：
 
 ```js
 module.exports = {
@@ -895,21 +895,21 @@ module.exports = {
 }
 ```
 
-##### `excludeFromCoverage`: `String | Array<String>`
+##### `excludeFromCoverage`: `String | Array<String>`{#excludefromcoverage-string--arraystring}
 
 > Default: `['test/', 'tests/', 'src/**/__tests__/']`
 
-Globs for paths which should be excluded from code coverage reporting.
+应从代码覆盖率报告中排除的全局路径。
 
-##### `frameworks`: `Array<String | Plugin>`
+##### `frameworks`: `Array<String | Plugin>`{#frameworks-arraystring--plugin}
 
 > Default: `['mocha']`
 
-Karma testing framework plugins.
+Karma测试框架插件。
 
-You must provide the plugin for any custom framework you want to use and manage it as a dependency yourself.
+您必须为您要使用的任何自定义框架提供插件，并自行将其作为依赖关系。
 
-e.g. if you're using a testing framework which produces [TAP](https://testanything.org/) output (such as [tape](https://github.com/substack/tape)). this is how you would use `frameworks` and `plugins` props to configure Karma:
+列如：如果您正在使用产生[TAP](https://testanything.org/)输出的测试框架（如[tape](https://github.com/substack/tape)）。以下是如何使用框架和插件属性配置Karma：
 
 ```
 npm install --save-dev karma-tap
@@ -925,7 +925,7 @@ module.exports = {
 }
 ```
 
-nwb can also determine the correct framework name given the plugin itself, so the following is functionally identical to the configuration above:
+nwb还可以确定给定插件本身的正确框架名称，因此以下功能与上述配置功能相同：
 
 ```js
 module.exports = {
@@ -937,7 +937,7 @@ module.exports = {
 }
 ```
 
-If a plugin module provides multiple plugins, nwb will only infer the name of the first plugin it provides, so pass it using `plugins` instead and list all the frameworks you want to use, for clarity:
+如果一个插件模块提供了多个插件，nwb只会推断它提供的第一个插件的名称，所以使用`plugins`代替它，并列出所有要使用的框架，以便清楚起见：
 
 ```js
 module.exports = {
@@ -950,37 +950,37 @@ module.exports = {
 }
 ```
 
-> **Note:** If you're configuring frameworks and you want to use the Mocha framework plugin managed by nwb, just pass its name as in the above example.
+> **注意：**如果您正在配置框架，并且要使用由nwb管理的Mocha框架插件，请按照上述示例传递其名称。
 
-##### `testContext`: `String`
+##### `testContext`: `String`{#testcontext-string}
 
-Use this configuration to point to a [Webpack context module](/docs/Testing.md#using-a-test-context-module) for your tests if you need to run code prior to any tests being run, such as customising the assertion library you're using, or global before and after hooks.
+如果您需要在运行任何测试之前运行代码（例如自定义您正在使用的断言库）或global前后hook，则使用此配置指向用于测试的[Webpack上下文模块](/docs/Testing.md#using-a-test-context-module)。
 
-If you provide a context module, it is responsible for including tests via Webpack's  `require.context()` - see the [example in the Testing docs](/docs/Testing.md#using-a-test-context-module).
+如果您提供上下文模块，则负责通过Webpack的`require.context()`包含测试 - [请参阅测试文档中的示例](/docs/Testing.md#using-a-test-context-module)。
 
-If the default [`testFiles`](#testfiles-string--arraystring) config wouldn't have picked up your tests, you must also configure it so they can be excluded from code coverage.
+如果默认的[`testFiles`](#testfiles-string--arraystring)配置不会接收到您的测试，您还必须配置它，以便它们可以从代码覆盖中排除。
 
-##### `testFiles`: `String | Array<String>`
+##### `testFiles`: `String | Array<String>`{#testfiles-string--arraystring}
 
 > Default: `.spec.js`, `.test.js` or `-test.js` files anywhere under `src/`, `test/` or `tests/`
 
-[Minimatch glob patterns](https://github.com/isaacs/minimatch) for test files.
+测试文件的[Minimatch glob模式](https://github.com/isaacs/minimatch)。
 
-If [`karma.testContext`](#testcontext-string) is not being used, this controls which files Karma will run tests from.
+如果没有使用[`karma.testContext`](#testcontext-string)，那么这将控制哪些文件将由Karma运行测试。
 
-This can also be used to exclude tests from code coverage if you're using [`karma.testContext`](#testcontext-string) - if the default `testFiles` patterns wouldn't have picked up your tests, configure this as well to exclude then from code coverage.
+如果您使用[`karma.testContext`](#testcontext-string)，如果默认的`testFiles`模式未能接收到测试，那么也可以将其从代码覆盖中排除。
 
-##### `plugins`: `Array<Plugin>`
+##### `plugins`: `Array<Plugin>`{#plugins-arrayplugin}
 
-A list of plugins to be loaded by Karma - this should be used in combination with [`browsers`](#browsers-arraystring--plugin), [`frameworks`](#frameworks-arraystring--plugin) and [`reporters`](#reporters-arraystring--plugin) config as necessary.
+由Karma加载的插件列表 - 这应该与[`browsers`](#browsers-arraystring--plugin)，[`frameworks`](#frameworks-arraystring--plugin)和[`reporters`](#reporters-arraystring--plugin)配置结合使用。
 
-##### `reporters`: `Array<String | Plugin>`
+##### `reporters`: `Array<String | Plugin>`{##reporters-arraystring--plugin}
 
 > Default: `['mocha']`
 
-Customising reporters follows the same principle as frameworks, just using the `reporters` prop instead.
+定制reporters遵循与框架相同的原则，只需使用`reporters`属性。
 
-For built-in reporters, or nwb's version of the Mocha reporter, just pass a name:
+对于内置的reporters，或者是nwb的Mocha版本的reporter，只需传一个名字：
 
 ```js
 module.exports = {
@@ -990,7 +990,7 @@ module.exports = {
 }
 ```
 
-For custom reporters, install and provide the plugin:
+对于自定义reporters，安装并提供插件：
 
 ```
 npm install --save-dev karma-tape-reporter
@@ -1005,13 +1005,13 @@ module.exports = {
 }
 ```
 
-##### `extra`: `Object`
+##### `extra`: `Object`{#extra-object-1}
 
-Extra configuration to be merged into the generated Karma configuration using [webpack-merge](https://github.com/survivejs/webpack-merge#webpack-merge---merge-designed-for-webpack).
+使用[webpack-merge](https://github.com/survivejs/webpack-merge#webpack-merge---merge-designed-for-webpack)将额外的配置合并到生成的Karma配置中。
 
-> **Note:** you *must* use Karma's own config structure in this object.
+> **注意：**你*必须*在这个对象中使用Karma自己的配置结构。
 
-e.g. to tweak the configuration of the default Mocha reporter:
+例如，调整默认Mocha reporter的配置：
 
 ```js
 module.exports = {
@@ -1026,21 +1026,21 @@ module.exports = {
 }
 ```
 
-### npm Build Configuration
+### npm构建配置{#npm-build-configuration}
 
-By default, nwb creates ES5 and ES6 modules builds for publishing to npm.
+默认情况下，nwb创建ES5和ES6模块，用于发布到npm。
 
-#### `npm`: `Object`
+#### `npm`: `Object`{#npm-object}
 
-npm build configuration is defined in a `npm` object, using the following fields:
+npm构建配置在`npm`对象中定义，使用以下字段：
 
-##### `cjs`: `Boolean`
+##### `cjs`: `Boolean`{#cjs-boolean}
 
-> Defaults to `true` if not provided.
+> 如果没有提供，则默认为“true”。
 
-Determines whether or not nwb will create a CommonJS build in `lib/` when you run `nwb build` for a React component/library or web module project.
+确定在为React组件/库或Web模块项目运行`nwb build`时，nwb是否会在`lib/`中创建一个CommonJS构建。
 
-Set to `false` to disable this:
+设置为`false`以禁用此功能：
 
 ```js
 module.exports = {
@@ -1050,25 +1050,25 @@ module.exports = {
 }
 ```
 
-##### `esModules`: `Boolean`
+##### `esModules`: `Boolean`{#esmodules-boolean}
 
-> Defaults to `true` if not provided.
+> 如果没有提供，则默认为`true`。
 
-Determines whether or not nwb will create an ES6 modules build for use by ES6 module bundlers when you run `nwb build` for a React component/library or web module project.
+确定在为React组件/库或Web模块项目运行`nwb build`时，nwb是否会创建ES6模块构建以供ES6模块bundler使用。
 
-When providing an ES6 modules build, you should also provide the following in `package.json` so compatible module bundlers can find it:
+当提供ES6模块构建时，您还应该在`package.json`中提供以下内容，以便compatible module bundlers可以找到它：
 
 ```
 "module": "es/index.js",
 ```
 
-These are included automatically if you create a project with an ES6 modules build enabled.
+如果创建启用了ES6模块构建的项目，则会自动包含这些。
 
-##### `umd`: `String | Object`
+##### `umd`: `String | Object`{#umd-string--object}
 
-Configures creation of a UMD build when you run `nwb build` for a React component/library or web module.
+配置为React组件/库或Web模块运行`nwb build`时创建UMD构建。
 
-If you just need to configure the global variable the UMD build will export, you can use a String:
+如果您只需配置UMD构建将导出的全局变量，则可以使用字符串：
 
 ```js
 module.exports = {
@@ -1078,17 +1078,17 @@ module.exports = {
 }
 ```
 
-If you also have some external dependencies to configure, use an object containing the following properties:
+如果还要配置一些外部依赖项，请使用包含以下属性的对象：
 
-###### `global`: `String`
+###### `global`: `String`{#global-string}
 
-The name of the global variable the UMD build will export.
+UMD构建将导出的全局变量的名称。
 
-###### `externals`: `Object`
+###### `externals`: `Object`{#externals-object}
 
-A mapping from `peerDependency` module names to the global variables they're expected to be available as for use by the UMD build.
+从`peerDependency`模块名称映射到全局变量，这些变量预计可供UMD构建使用。
 
-e.g. if you're creating a React component which also depends on [React Router](https://github.com/reactjs/react-router), this configuration would ensure they're not included in the UMD build:
+例如，如果您正在创建还依赖于[React Router](https://github.com/reactjs/react-router)的React组件，则此配置将确保它们不包含在UMD构建中：
 
 ```js
 module.exports = {
@@ -1104,16 +1104,16 @@ module.exports = {
 }
 ```
 
-#### `package.json` UMD Banner Configuration
+#### `package.json` UMD Banner Configuration{#packagejson-umd-banner-configuration}
 
-A banner comment added to UMD builds will use as many of the following `package.json` fields as are present:
+添加到UMD构建中的banner comment将使用下列`package.json`字段作为预设：
 
 - `name`
 - `version`
 - `homepage`
 - `license`
 
-If all fields are present the banner will be in this format:
+如果所有字段都存在，banner将采用以下格式：
 
 ```js
 /*!
