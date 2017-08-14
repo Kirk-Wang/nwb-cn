@@ -601,15 +601,15 @@ module.exports = {
 
 - `audio` - handles `.wav`, `.mp3`, `.m4a`, `.aac`, and `.oga` files using [url-loader][url-loader]
 
-> Default config for all url-loaders is `{options: {limit: 1, name: '[name].[hash:8].[ext]'}}`.
+> 所有url-loader的默认配置为`{options: {limit: 1, name: '[name].[hash:8].[ext]'}}`。
 >
-> Default `limit` config prevents any files being inlined by default, while allowing you to configure `url-loader` to enable inlining if you need it.
+> 默认的`limit`配置可以防止任何文件被默认为内联，同时允许您配置`url-loader`，以便在需要时启用内联。
 
-See the [Stylesheets documentation](/docs/Stylesheets.md#) for default rules generated for stylesheets.
+有关为样式表生成的默认规则，请参阅[样式表文档](/docs/Stylesheets.md#)。
 
-###### Customising loaders
+###### 定制loader{#customising-loaders}
 
-Provide `loader` config for a rule to replace its loader:
+为规则提供`loader`配置来替换其loader：
 
 ```js
 module.exports = {
@@ -624,7 +624,7 @@ module.exports = {
 }
 ```
 
-To chain loaders, provide `use` config:
+给链式loader提供`use`配置：
 
 ```js
 module.exports = {
@@ -644,9 +644,9 @@ module.exports = {
 }
 ```
 
-###### Disabling default rules
+###### 禁用默认规则{#disabling-default-rules}
 
-To disable a default rule, set its id to `false`:
+要禁用默认规则，请将其id设置为`false`：
 
 ```js
 module.exports = {
@@ -658,19 +658,19 @@ module.exports = {
 }
 ```
 
-##### `publicPath`: `String`
+##### `publicPath`: `String`{#publicpath-string}
 
-> This is just Webpack's [`output.publicPath` config](https://webpack.js.org/configuration/output/#output-publicpath) pulled up a level to make it more convenient to configure.
+>这只是Webpack的[`output.publicPath`配置](https://webpack.js.org/configuration/output/#output-publicpath)提升了一个级别，使其更方便的配置。
 
-`publicPath` defines the URL static resources will be referenced by in build output, such as `<link>` and `<src>` tags in generated HTML, `url()` in stylesheets and paths to any static resources you `require()` into your modules.
+`publicPath`定义了在构建输出中引用的URL静态资源，例如生成的HTML中的`<link>`和`<src>`标签，样式表中的`url()`和你`require()`进入你模块任何静态资源。
 
-The default `publicPath` configured for most app builds is `/`, which assumes you will be serving your app's static resources from the root of whatever URL it's hosted at:
+大多数app构建配置默认`publicPath`为`/`，它假设您将从托管的任何URL的根目录提供应用程序的静态资源：
 
 ```html
 <script src="/app.12345678.js"></script>
 ```
 
-If you're serving static resources from a different path, or from an external URL such as a CDN, set it as the `publicPath`:
+如果您从不同的路径或外部URL（如CDN）提供静态资源，请将其设置为`publicPath`：
 
 ```js
 module.exports = {
@@ -680,9 +680,9 @@ module.exports = {
 }
 ```
 
-The exception is the React component demo app, which doesn't set a `publicPath`, generating a build without any root URL paths to static resources. This allows you to serve it at any path without configuration (e.g. on GitHub Project Pages), or open the generated `index.html` file directly in a browser, which is ideal for distributing app builds which don't require a server to run.
+例外是React组件demo app，它不设置`publicPath`，生成没有任何根URL路径到静态资源的构建。 这可以让您在任何路径上进行配置（例如，在GitHub项目页面上），或者直接在浏览器中打开生成的`index.html`文件，这是分发不需要服务器运行的应用程序构建的理想选择。
 
-If you want to create a path-independent build, set `publicPath` to blank or `null`:
+如果要创建一个独立于路径的构建，将`publicPath`设置为空或`null`：
 
 ```js
 module.exports = {
@@ -692,19 +692,19 @@ module.exports = {
 }
 ```
 
-The trade-off for path-independence is HTML5 History routing won't work, as serving up `index.html` at anything but its real path will mean its static resource URLs won't resolve. You will have to fall back on hash-based routing if you need it.
+路径独立性的折衷是HTML5历史路由将无法正常工作，因为`index.html`在任何地方都可以作为服务，并且它的真实路径将意味着其静态资源URL将无法解决。 如果需要，您将不得不回到基于hash的路由。
 
-##### `styles`: `Object | false | 'old'`
+##### `styles`: `Object | false | 'old'`{#styles-object--false--old}
 
-Configures how nwb creates Webpack config for importing stylesheets.
+配置nwb如何创建用于导入样式表的Webpack配置
 
-See the [Stylesheets documentation](/docs/Stylesheets.md#stylesheets) for details.
+有关详细信息，请参阅[样式表文档](/docs/Stylesheets.md#stylesheets)。
 
-##### `uglify`: `Object | false`
+##### `uglify`: `Object | false`{#uglify-object--false}
 
-Configures [options for Webpack's `UglifyJsPlugin`](https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin), which will be used when creating production builds.
+配置[Webpack的`UglifyJsPlugin`选项](https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin)，这将在创建生产构建时使用。
 
-Any additional options provided will be merged into nwb's defaults, which are:
+提供的任何其他选项将被合并到nwb的默认值中，它们是：
 
 ```js
 {
@@ -718,7 +718,7 @@ Any additional options provided will be merged into nwb's defaults, which are:
 }
 ```
 
-For example, if you want to strip development-only code but keep the output readable for debugging:
+例如，如果您要剥离仅开发专用代码，但保留输出可用于调试：
 
 ```js
 module.exports = {
@@ -731,7 +731,7 @@ module.exports = {
 }
 ```
 
-To completely disable use of UglifyJS, set `uglify` to false:
+要完全禁用UglifyJS的使用，将`uglify`设置为false：
 
 ```js
 module.exports = {
@@ -743,11 +743,11 @@ module.exports = {
 
 ##### `extra`: `Object`
 
-Extra configuration to be merged into the generated Webpack configuration using [webpack-merge](https://github.com/survivejs/webpack-merge#webpack-merge---merge-designed-for-webpack) - see the [Webpack configuration docs](https://webpack.js.org/configuration/) for the available properties.
+使用[webpack-merge](https://github.com/survivejs/webpack-merge#webpack-merge---merge-designed-for-webpack)将额外的配置合并到生成的Webpack配置中 - 有关可用属性，请参阅[Webpack 配置文档](https://webpack.js.org/configuration/) 。
 
-> **Note:** Webpack 2 validates the structure of the config it's given, so providing invalid or unexpected config will break the build.
+> **注意：** Webpack 2验证其给定的配置的结构，因此提供无效或意外的配置将会破坏构建。
 
-e.g. to add an extra rule which isn't managed by nwb's own `webpack.rules` config, you would need to provide a list of rules at `webpack.extra.module.rules`.
+例如，要添加一个不由nwb自己的`webpack.rules`配置管理的额外规则，您需要在`webpack.extra.module.rules`中提供一个规则列表。
 
 ```js
 var path = require('path')
@@ -776,11 +776,11 @@ module.exports = function(nwb) {
 }
 ```
 
-##### `config`: `Function`
+##### `config`: `Function`{#config-function}
 
-Finally, if you need *complete* control, provide a `webpack.config()` function which will be given the generated config.
+最后，如果你需要*完全的*控制，提供一个`webpack.config()`函数，它将被赋予生成的配置。
 
-> **Note:** you *must* return a config object from this function.
+> **注意：**你*必须*从这个函数返回一个配置对象。
 
 ```js
 module.exports = {
