@@ -113,7 +113,7 @@ nwb build-react-app --babel.stage=2 --webpack.hoisting
   - [`karma.extra`](#extra-object-1) - 用于额外的Karma配置，将被合并到生成的配置中
 - [npm 构建配置](#npm-build-configuration)
   - [`npm`](#npm-object)
-  - [`npm.cjs`](#esmodules-boolean) - 切换创建一个CommonJS构建
+  - [`npm.cjs`](#cjs-boolean) - 切换创建一个CommonJS构建
   - [`npm.esModules`](#esmodules-boolean) - 切换创建ES模块构建
   - UMD build
     - [`npm.umd`](#umd-string--object) - 启用导出全局变量的UMD构建
@@ -795,15 +795,15 @@ module.exports = {
 }
 ```
 
-### Dev Server Configuration
+### Dev Server Configuration{#dev-server-configuration}
 
-nwb uses [Webpack Dev Server](https://github.com/webpack/webpack-dev-server#readme) to serve apps for development - you can tweak the options nwb uses and also enable additional features.
+nwb使用[Webpack Dev Server](https://github.com/webpack/webpack-dev-server#readme)为应用程序提供开发 - 您可以调整nwb使用的选项，还可以启用其他功能。
 
-#### `devServer`: `Object`
+#### `devServer`: `Object`{#devserver-object}
 
-Configuration for Webpack Dev Server - see Webpack's [`devServer` config documentation](https://webpack.js.org/configuration/dev-server/#devserver) for the available options.
+Webpack Dev Server的配置 - 有关可用选项，请参阅Webpack的[`devServer`配置文档](https://webpack.js.org/configuration/dev-server/#devserver)
 
-Any `devServer` options provided will be merged on top of the following default options nwb uses:
+提供的任何`devServer`选项将被合并在以下nwb使用的默认选项之上：
 
 ```js
 {
@@ -819,19 +819,19 @@ Any `devServer` options provided will be merged on top of the following default 
 }
 ```
 
-Notable features you can configure using these options:
+您可以使用以下选项配置值得注意的功能：
 
-- [`devServer.historyApiFallback`](https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback) - configure `disableDotRule` if you need to use dots in your path when using the HTML5 History API.
+- [`devServer.historyApiFallback`](https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback) - 如果您在使用HTML5历史记录API时需要在路径中使用点，请配置`disableDotRule`。
 
-- [`devServer.https`](https://webpack.js.org/configuration/dev-server/#devserver-https) - enable HTTPS with a default self-signed certificate, or provide your own certificates.
+- [`devServer.https`](https://webpack.js.org/configuration/dev-server/#devserver-https) - 启用具有默认自签名证书的HTTPS，或提供您自己的证书。
 
-- [`devServer.overlay`](https://webpack.js.org/configuration/dev-server/#devserver-overlay) - disable the compile error overlay, or have it also appear for warnings.
+- [`devServer.overlay`](https://webpack.js.org/configuration/dev-server/#devserver-overlay) - 禁用编译错误覆盖，或者出现的警告。
 
-- [`devServer.proxy`](https://webpack.js.org/configuration/dev-server/#devserver-proxy) - proxy certain URLs to a separate API backend development server.
+- [`devServer.proxy`](https://webpack.js.org/configuration/dev-server/#devserver-proxy) - 将某些URL代理到单独的API后端开发服务器。
 
-- [`devServer.setup`](https://webpack.js.org/configuration/dev-server/#devserver-setup) - access the Express app to add your own middleware to the dev server.
+- [`devServer.setup`](https://webpack.js.org/configuration/dev-server/#devserver-setup) - 访问Express　app，将您自己的中间件添加到dev server。
 
-e.g. to enable HTTPS:
+例如，启用HTTPS：
 
 ```js
 module.exports = {

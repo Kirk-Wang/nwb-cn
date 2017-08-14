@@ -49,6 +49,27 @@
             * [webpack.uglify](Configuration/README.md#uglify-object--false)
             * [webpack.extra](Configuration/README.md#extra-object)
             * [webpack.config](Configuration/README.md#config-function)
+        * [Dev Server配置](Configuration/README.md#dev-server-configuration)
+            * [devServer](Configuration/README.md#devserver-object)
+        * [Karma配置](Configuration/README.md#karma-configuration)
+            * [karma](Configuration/README.md#karma-object)
+            * [karma.browsers](Configuration/README.md#browsers-arraystring--plugin)
+            * [karma.excludeFromCoverage](Configuration/README.md#excludefromcoverage-string--arraystring)
+            * [karma.frameworks](Configuration/README.md#frameworks-arraystring--plugin)
+            * [karma.plugins](Configuration/README.md#plugins-arrayplugin)
+            * [karma.reporters](Configuration/README.md#reporters-arraystring--plugin)
+            * [karma.testContext](Configuration/README.md#testcontext-string)
+            * [karma.testFiles](Configuration/README.md#testfiles-string--arraystring)
+            * [karma.extra](Configuration/README.md#extra-object-1)
+        * [npm 构建配置](Configuration/README.md#npm-build-configuration)
+            * [npm](Configuration/README.md#npm-object)
+            * [npm.cjs](Configuration/README.md#cjs-boolean)
+            * [npm.esModules](Configuration/README.md#esmodules-boolean)
+            * [npm.umd](Configuration/README.md#umd-string--object)
+                * [umd.global](Configuration/README.md#global-string)
+                * [umd.externals](Configuration/README.md#externals-object)
+            * [package.json字段](Configuration/README.md#packagejson-umd-banner-configuration)
+            
 
 
     
